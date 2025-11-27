@@ -1,3 +1,6 @@
+-- Visual Node Path
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TomtomFH/Pressure/refs/heads/main/nodeVisualizer.lua",true))()
+
 local workspace = game:GetService("Workspace")
 local lighting = game:GetService("Lighting")
 local players = game:GetService("Players")
