@@ -210,7 +210,7 @@ local function detectItem(v)
         local interactionType = v:GetAttribute("InteractionType")
 
         if interactionType == "CurrencyBase" then
-            local amount = v:GetAttribute("Amount")
+            local amount = tonumber(v:GetAttribute("Amount"))
             local name = "$" .. amount
             local color
 
