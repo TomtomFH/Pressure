@@ -1,6 +1,5 @@
 -- Visual Node Path
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TomtomFH/Pressure/refs/heads/main/nodeVisualizer.lua",true))()
-queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/TomtomFH/Pressure/refs/heads/main/main.lua',true))()")
 local workspace = game:GetService("Workspace")
 local lighting = game:GetService("Lighting")
 local players = game:GetService("Players")
@@ -351,4 +350,5 @@ workspace.ChildAdded:Connect(function(child)
 end)
 
 -- TODO: fix existing items not getting an esp
+
 
