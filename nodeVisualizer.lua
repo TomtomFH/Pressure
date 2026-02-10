@@ -97,7 +97,7 @@ local function getClosestExitNode(entrance, nodesFolder)
 end
 
 local function validateAndFixNodeConnections(room)
-    task.spawn(function()
+    spawn(function()
         while true do
             local nodesFolder = room:FindFirstChild("EntityNodes")
             if nodesFolder then
@@ -162,7 +162,7 @@ local function validateAndFixNodeConnections(room)
                     end
                 end
             end
-            task.wait(2)
+            wait(2)
         end
     end)
 end
@@ -176,9 +176,11 @@ local function drawRoomNodeConnections(room)
         if node and node:IsA("BasePart") then
             local conFolder = node:FindFirstChild("Connections")
             if conFolder then
+                -- Connect to all Previous connections
                 for _, child in ipairs(conFolder:GetChildren()) do
                     if child.Name:match("^Previous") and child:IsA("ObjectValue") and child.Value and child.Value:IsA("BasePart") then
                         local a, b = node, child.Value
+                        -- create attachments and beam between node and its Previous
                         local att0 = Instance.new("Attachment")
                         att0.Parent = a
                         local att1 = Instance.new("Attachment")
@@ -220,20 +222,20 @@ local function safeWaitForChild(parent, name, timeout)
 end
 
 local function connectRoomInternal(room)
-    task.spawn(function()
+    spawn(function()
         while true do
             local nodes = room:FindFirstChild("EntityNodes")
             if nodes then
                 drawRoomNodeConnections(room)
                 break
             end
-            task.wait(0.2)
+            wait(0.2)
         end
     end)
 end
 
 local function connectRoomToPrevious(room)
-    task.spawn(function()
+    spawn(function()
         while true do
             local entrancesFolder = room:FindFirstChild("Entrances")
             if entrancesFolder then
@@ -283,13 +285,13 @@ local function connectRoomToPrevious(room)
                 end
                 if connectedAny then break end
             end
-            task.wait(0.2)
+            wait(0.2)
         end
     end)
 end
 
 local function setupNodeListener(room)
-    task.spawn(function()
+    spawn(function()
         while true do
             local nodes = room:FindFirstChild("EntityNodes")
             if nodes then
@@ -303,7 +305,7 @@ local function setupNodeListener(room)
                 end)
                 break
             end
-            task.wait(0.2)
+            wait(0.2)
         end
     end)
 end
