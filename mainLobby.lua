@@ -179,7 +179,7 @@ connectSet(uiCons, listLayout:GetPropertyChangedSignal("AbsoluteContentSize"), u
 connectSet(uiCons, search:GetPropertyChangedSignal("Text"), buildUI)
 
 local function bindTeleporter(t)
-    local target = t.Main.BillboardGui.Frame.Frame
+    local target = t:WaitForChild("Main"):WaitForChild("BillboardGui"):WaitForChild("Frame"):WaitForChild("Frame")
     connectSet(teleCons, target.ChildAdded, function(c)
         if selectedPlayer and c.Name == selectedPlayer.Name then
             local char = LocalPlayer.Character
